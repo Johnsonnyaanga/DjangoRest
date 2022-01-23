@@ -30,7 +30,7 @@ class ClassLevel(models.Model):
     date_created = models.DateTimeField(auto_now_add=True,null=True)
 
     def __str__(self):
-        return self.parent_name
+        return self.class_name
        
         
 class Student(models.Model):
@@ -39,6 +39,7 @@ class Student(models.Model):
     admssion_number =  models.IntegerField(null= True)
     parent = models.ForeignKey(Parent,null=True,on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True,null=True)
+    class_level = models.ForeignKey(ClassLevel,null=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.Stud_name
@@ -58,8 +59,8 @@ class Assignment(models.Model):
     
 class AssignmentStatus(models.Model):
     STATUS_CHOICE = (
-        ('completed','complete'),
-        ('incompleted','incomplete'),
+        ('complete','complete'),
+        ('incomplete','incomplete'),
     )
     assignment = models.ForeignKey(Assignment,null=True,on_delete=models.SET_NULL)
     student = models.ForeignKey(Student,null=True,on_delete=models.SET_NULL)
@@ -67,5 +68,5 @@ class AssignmentStatus(models.Model):
     date_created = models.DateTimeField(auto_now_add=True,null=True)
 
     def __str__(self):
-        return self.stat  
+        return self.status  
     
