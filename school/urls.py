@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
+from shule import views as studeView
 from students import views
 from django.contrib import admin
 
@@ -23,6 +24,8 @@ from django.contrib import admin
 urlpatterns = [
     # path('students/', include('students.urls')),
     path('heroes/',views.heroesList.as_view(),),
+    path('students/',studeView.StudentList.as_view(),),
+
     path('admin/', admin.site.urls)
 ]
 
